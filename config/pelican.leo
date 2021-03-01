@@ -57,7 +57,7 @@
 <v t="leo.20180115115910.1"><vh>2020</vh>
 <v t="leo.20180423103639.1"><vh>2020 Fall CP 課程</vh>
 <v t="leo.20180423103656.1"><vh>@clean 20210225.md</vh>
-<v t="leo.20210301192904.1"><vh>newHeadline</vh></v>
+<v t="leo.20210301194204.1"><vh>newHeadline</vh></v>
 </v>
 </v>
 </v>
@@ -105,7 +105,7 @@ Author: 40823112
 &lt;!-- PELICAN_END_SUMMARY --&gt;
 
 @others</t>
-<t tx="leo.20210301192904.1">Python
+<t tx="leo.20210301194204.1">Python
 ----
 Python 可以用來開發單機版的視窗程式套件 Pyslvs-UI
 
@@ -120,8 +120,7 @@ Flutter
 ----
 
 Flutter 用來開發跨 Apple 與 Android 手機與平板上的 Apps
-
-@others</t>
+</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
