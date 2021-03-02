@@ -15,9 +15,21 @@
 <p><strong>Step1:</strong>在tmp的目錄下輸入</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">leo</pre>
 <p><strong><img alt="" height="312" src="/images/leo step1.jpg" width="600"/></strong></p>
-<p><strong>Step2:</strong>若開啟leo時出現此畫面，則需到<em><strong>Y/home/.leo</strong></em>中新增名稱為<strong>.leoID的txt文字檔，</strong>內容隨意</p>
+<p><strong>Step2:</strong>若開啟leo時出現此畫面，則需到<em><strong>Y/home/.leo</strong></em>中新增<strong>.leoID的txt文字檔，</strong>內容隨意</p>
 <p><img alt="" height="190" src="/images/leo step2.jpg" width="252"/></p>
 <p><img alt="" height="456" src="/images/leo step2_1.jpg" width="348"/></p>
 <p><strong>Step3:</strong>重新啟動編輯器後就可開啟</p>
 <p><img alt="" height="472" src="/images/leo step3.jpg" width="600"/></p>
+<p><strong>Step4:</strong>按<em><strong>File</strong></em>中的<em><strong>Open-Outline</strong></em>，選取<em><strong>Y/tmp/cd2021/config/pelican.leo</strong></em></p>
+<p><em><strong><img alt="" height="473" src="/images/leo step4.jpg" width="600"/></strong></em></p>
+<p><em><strong><img alt="" height="467" src="/images/leo step4_2.jpg" width="600"/></strong></em></p>
+<p><strong>Step5:</strong>在<strong>Pelican設定</strong>下的<strong>@edit pelicanconf.py</strong>更改<em><strong>AUTHOR、SITENAME</strong></em></p>
+<p><em><strong></strong></em></p>
 <p></p>
+<p><strong>Step6:</strong>更改<strong>@edit publishconf.py</strong>中的<strong>SITEURL</strong></p>
+<p><strong></strong></p>
+<p><strong>Step7:</strong>在<strong>markdown</strong>下更改Blog內容</p>
+<p></p>
+<p><strong>Step7:</strong>更改完後，在編輯器上輸入就可push</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">pelican markdown -o blog -s local_publishconf.py
+pelican markdown -o blog -s publishconf.py</pre>
