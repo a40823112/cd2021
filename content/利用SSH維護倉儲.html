@@ -133,8 +133,41 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Course Content << <a href='Course Content.html'>Previous</a> <a href='利用SSH維護倉儲.html'>Next</a> >> 利用SSH維護倉儲<br /><h1>W1</h1>
-<br />Course Content << <a href='Course Content.html'>Previous</a> <a href='利用SSH維護倉儲.html'>Next</a> >> 利用SSH維護倉儲</div>
+    <div id="tipue_search_content">W1 << <a href='W1.html'>Previous</a> <a href='建立倉儲.html'>Next</a> >> 建立倉儲<br /><h1>利用SSH維護倉儲</h1>
+<p><strong><span color="blue" size="3" style="color: blue; font-size: large;">新增鑰匙:</span></strong></p>
+<p><strong>Step1: </strong>使用編輯器進入shell命令環境</p>
+<p><img alt="" height="316" src="./../images/ssh 1.jpg" width="600"/></p>
+<p><strong>Step2:</strong>輸入指令，在<em><strong>y/tmp/key/id_rsa</strong></em>目錄下新增id_rsa與id_rsa等<strong>private key</strong>與<strong>public key</strong></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">ssh-keygen -t rsa -b 4096 -C "學號"
+</pre>
+<p><img alt="" height="316" src="./../images/ssh 2.jpg" width="600"/></p>
+<p><strong>Step3:</strong>開啟Y/Putty目錄下的<strong>puttygen.exe</strong>將id_rsa轉為Putty可解讀的.ppk格式</p>
+<p><img alt="" height="588" src="./../images/ssh3.jpg" width="600"/></p>
+<p><strong>Step4:</strong>將<strong>public key</strong>利用scite開啟，在工具列中<strong>Options-Wrap</strong>就可見完整的檔案內容</p>
+<p><strong>Step5:</strong>將內容複製後，開啟<strong>github settings</strong>中的<strong>SSH and GPD keys</strong></p>
+<p><strong><img alt="" height="502" src="./../images/ssh4.jpg" width="301"/></strong></p>
+<p>選擇<strong> New SSH keys</strong></p>
+<p><strong><img alt="" height="146" src="./../images/ssh5.jpg" width="654"/></strong></p>
+<p>將複製內容放入KEY的空格</p>
+<p><img alt="" height="341" src="./../images/ssh6.jpg" width="600"/></p>
+<p><strong><span color="blue" size="3" style="color: blue; font-size: large;">設定Putty:</span></strong></p>
+<p><strong>Step1:</strong>修改<strong>start.bat</strong>設定，新增</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">set GIT_HOME=%Disk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe</pre>
+<p><strong>Step2:</strong>設定<strong>y/home/.shh</strong>中的<strong>config</strong></p>
+<p><strong><img alt="" height="671" src="./../images/ssh config.jpg" width="600"/></strong></p>
+<p><strong>Step3:</strong>將倉儲中.git目錄下的config連線設定，由https更改為ssh連線</p>
+<p><img alt="" height="672" src="./../images/ssh url.jpg" width="600"/></p>
+<p><strong>Step4:</strong>開啟 <strong>Putty.exe</strong></p>
+<p><strong><img alt="" height="467" src="./../images/putty exe.jpg" width="600"/></strong></p>
+<p><strong>Step5:Load github.com</strong></p>
+<p><strong><img alt="" height="588" src="./../images/putty exe1.jpg" width="600"/></strong></p>
+<p><strong>Step6:</strong>進入<strong>Connection/SSH/Auth</strong>選擇之前創的Key</p>
+<p><img alt="" height="583" src="./../images/putty exe2.jpg" width="600"/></p>
+<p><strong>Step7:</strong>回到<strong>Session按save</strong></p>
+<p><strong><img alt="" height="584" src="./../images/putty exe3.jpg" width="600"/></strong></p>
+<p><strong>Step8:</strong>按下<strong>open</strong>後就可進行push</p>
+<p></p><br />W1 << <a href='W1.html'>Previous</a> <a href='建立倉儲.html'>Next</a> >> 建立倉儲</div>
         
     <!-- footer -->
       <div class="container">
