@@ -140,8 +140,8 @@ pelican markdown -o blog -s publishconf.py</pre>
 <p>40823145<span> </span><span>Repository: </span><a href="https://github.com/40823145/cd2021">40823145</a> <span>W</span><span>ebsite</span><span>: </span><a href="https://40823145.github.io/cd2021">40823145</a></p>
 <h3>進度規劃</h3>
 <p><strong>W6: </strong>小組主題討論、<span>C</span><span>oppeliasim方向鍵操控模擬</span></p>
-<p><strong>W7:</strong> C<span>oppeliasim方向鍵操控與感測器模擬</span></p>
-<p><strong>W8: </strong>Coppeliasim<span>感測器</span>模擬、<span>網頁報告與製作</span></p>
+<p><strong>W7:</strong> C<span>oppeliasim方向鍵操控與傳感器模擬</span></p>
+<p><strong>W8: </strong>Coppeliasim傳<span>感器</span>模擬、<span>網頁報告與製作</span></p>
 <p><strong>W9: </strong>網頁報告與製作</p><h2>W6</h2>
 <h3>討論</h3>
 <p>分組討論完，決定Stage2的<span>產品設計內容，為Stage1-ag1的產品進行改良，並新增其它功能:</span></p>
@@ -149,7 +149,83 @@ pelican markdown -o blog -s publishconf.py</pre>
 <p><em><strong>2.增加接近傳感器使產品自動行走時，不會撞到障礙物</strong></em></p>
 <p></p>
 <p><em><img alt="" height="471" src="https://a40823112.github.io/stage2-ag1/images/EV3-6.jpg" width="837"/></em></p>
-<p></p><h1>Product Drawing</h1>
+<h2>W7</h2>
+<h3>Coppeliasim方向鍵操控模擬</h3>
+<p><img src="https://a40823112.github.io/stage2-ag1/images/EV3-14.gif"/></p>
+<p><span>(</span><span>🔽程式碼</span><span>)</span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    left_handle= sim.getObjectHandle('left_m')
+    right_handle= sim.getObjectHandle('right_m')
+    MaxVel=2
+    leftvelocity=0
+    rightvelocity=0
+    dVel=0.5;
+    sim.setJointTargetVelocity(left_handle,leftvelocity)
+    sim.setJointTargetVelocity(right_handle,rightvelocity)
+end
+ 
+function sysCall_actuation() 
+    message,auxiliaryData=sim.getSimulatorMessage()
+    while message~=-1 do
+        if (message==sim.message_keypress) then
+            if (auxiliaryData[1]==32) then
+                -- right key
+                leftvelocity=0
+                rightvelocity=0
+                sim.setJointForce(left_front_handle, 0)
+                sim.setJointForce(right_front_handle, 0)
+                break
+            else
+                sim.setJointForce(left_handle, 10000)
+                sim.setJointForce(right_handle, 10000)
+            end
+            if (auxiliaryData[1]==2007) then
+                -- up key
+                leftvelocity=(leftvelocity+rightvelocity)/2
+                rightvelocity=leftvelocity
+                leftvelocity=leftvelocity+dVel
+                rightvelocity=rightvelocity+dVel
+            end
+            if (auxiliaryData[1]==2008) then
+                -- down key
+                leftvelocity=(leftvelocity+rightvelocity)/2
+                rightvelocity=leftvelocity
+                leftvelocity=leftvelocity-dVel
+                rightvelocity=rightvelocity-dVel
+            end
+            if (auxiliaryData[1]==2009) then
+                -- left key
+                leftvelocity=leftvelocity-dVel
+                rightvelocity=rightvelocity+dVel
+            end
+            if (auxiliaryData[1]==2010) then
+                -- right key
+                leftvelocity=leftvelocity+dVel
+                rightvelocity=rightvelocity-dVel
+            end
+        end
+        message,auxiliaryData=sim.getSimulatorMessage()
+    end
+     
+    if leftvelocity&gt;MaxVel then
+        leftvelocity=MaxVel
+    end
+    if leftvelocity&lt;-MaxVel then
+        leftvelocity=-MaxVel
+    end
+     
+    if rightvelocity&gt;MaxVel then
+                rightvelocity=MaxVel
+    end
+    if rightvelocity&lt;-MaxVel then
+                rightvelocity=-MaxVel
+    end
+     
+    sim.setJointTargetVelocity(left_handle,leftvelocity)
+    sim.setJointTargetVelocity(right_handle,rightvelocity)
+     
+end</pre>
+<h3>模擬問題與排解</h3><h1>Product Drawing</h1>
 <h2>stage1-ag10</h2>
 <p>Inventor:<a href="https://drive.google.com/drive/folders/1OMjDAU-FfpDeHJmzYHOAeyjqFkp-jZ64?usp=sharing">達爾文船零件圖檔</a></p>
 <p><img alt="" height="547" src="/images/下載.png" width="600"/></p>
