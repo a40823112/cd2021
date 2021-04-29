@@ -151,7 +151,7 @@ pelican markdown -o blog -s publishconf.py</pre>
 <p><em><img alt="" height="471" src="https://a40823112.github.io/stage2-ag1/images/EV3-6.jpg" width="837"/></em></p>
 <h2>W7</h2>
 <h3>Coppeliasim方向鍵操控模擬</h3>
-<p><img src="https://a40823112.github.io/stage2-ag1/images/EV3-14.gif"/></p>
+<p><span><img alt="" height="402" src="/images/方向鍵模擬.gif" width="800"/></span></p>
 <p><span>(</span><span>🔽程式碼</span><span>)</span></p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
     left_handle= sim.getObjectHandle('left_m')
@@ -224,8 +224,16 @@ function sysCall_actuation()
     sim.setJointTargetVelocity(left_handle,leftvelocity)
     sim.setJointTargetVelocity(right_handle,rightvelocity)
      
-end</pre>
-<h3>模擬問題與排解</h3>
+end</pre><h3>模擬問題與排解</h3>
+<p><strong>問題:</strong><span> </span>當本體開啟運動模擬時會產生錯誤，導致產品解體</p>
+<p><strong><img alt="" height="433" src="/images/HnHbWHruYE.gif" width="800"/></strong></p>
+<p><strong>問題原因:</strong><span> </span>討論後發現，產品的模擬干涉太多使其無法正常運作，原因是產品的輪子跟球體上並不是完整的圓，而是由許多正方形的小格子所構成，所以在模擬時產生過多的干涉影響電腦正常模擬，因而模擬錯誤。</p>
+<p><img alt="" height="523" src="https://a40823112.github.io/stage2-ag1/images/%E8%BC%AA%E5%AD%90%E6%94%B9%E5%96%84.jpg" width="600"/></p>
+<p><strong></strong></p>
+<p><strong>問題排解:</strong><span><span> 在coppeliasim內 add-&gt;primitive shape-&gt;Cylinder 增添簡化圖形來代替原本的車輪，而原本的輪子就做為Disc的造型。</span></span></p>
+<p><span><span><img alt="" height="392" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84.jpg" width="400"/></span></span></p>
+<p><span><span><img alt="" height="125" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84%E6%8E%92%E5%88%97.jpg" width="200"/></span></span></p>
+<p><span><span><img alt="" height="701" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84skin.jpg" width="600"/></span></span></p>
 <p></p><h1>Product Drawing</h1>
 <h2>stage1-ag10</h2>
 <p>Inventor:<a href="https://drive.google.com/drive/folders/1OMjDAU-FfpDeHJmzYHOAeyjqFkp-jZ64?usp=sharing">達爾文船零件圖檔</a></p>
