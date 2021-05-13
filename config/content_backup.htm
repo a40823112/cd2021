@@ -233,7 +233,40 @@ end</pre><h3>模擬問題與排解</h3>
 <p><span><span><img alt="" height="392" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84.jpg" width="400"/></span></span></p>
 <p><span><span><img alt="" height="125" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84%E6%8E%92%E5%88%97.jpg" width="200"/></span></span></p>
 <p><span><span><img alt="" height="701" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84skin.jpg" width="600"/></span></span></p>
-<p></p><h1>Product Drawing</h1>
+<p></p>
+<h2>W10</h2>
+<h3>Task 1</h3>
+<p><span>讀取 <a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a> , 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結。</span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"># open file, default is read mode, since txt content no chinese char4
+# no encoding = "UTF-08" is needed
+with open("123.txt") as fh:
+    #匯入txt內容
+    data = fh.readlines()
+    data = [a.replace('4823122','40823122') for a in data]
+    #由於22號座號打錯少打0，給後傳回data
+    data = [b.replace('\t\t\t\t','') for b in data]
+    #第三組的組員只有6人，多讀取了四個空格，因此多了四個\t，將其刪除後匯入data
+    print(data)
+for i in range(len(data)):
+    #(len(data))=6，共有六組
+    group = data[i].rstrip("\n").split("\t")
+    #刪除data中的\n，並將\t作為分隔的依據
+    print('&lt;p&gt;'+group[0]+'|&lt;a href="https://'+group[1]+'.github.io/stage3-ag'+group[0][9]+'"&gt;網站&lt;/a&gt;|&lt;a href="https://github.com/'+group[2]+'/stage3-ag'+group[0][9]+'"&gt;倉儲&lt;/a&gt;&lt;/p&gt;')
+#用for迴圈增添每個小組的超連結網址
+#print : 將字串顯示在螢幕上
+#group[0] :文字檔中每一條第一個值、[1]:文字檔中每一條第二個值
+#group[0][9]:文字檔中每一條第一個值的第九位
+ 
+    for z in range(2,18,2):
+    #range(2,18,2):選取文字檔中的第2格到第18格，每跳兩格選一次
+        try:
+            print('&lt;p&gt;'+group[z]+'|Website:'+'&lt;a href="https://'+group[z]+'.github.io/cd2021'+'"&gt;'+group[z]+'&lt;/a&gt;'+'|Repository:'+'&lt;a href="https://github.com/'+group[z]+'/cd2021'+'"&gt;'+group[z]+'&lt;/a&gt;&lt;/p&gt;')
+            #用for迴圈增添每個組員的超連結網址
+            #group[z] : 選取z跳的值
+        except:
+            continue
+            #由於有一組是6人，在執行程式時會超出範圍影響輸出，所以需用try execot解決</pre>
+<p><span></span></p><h1>Product Drawing</h1>
 <h2>stage1-ag10</h2>
 <p>Inventor:<a href="https://drive.google.com/drive/folders/1OMjDAU-FfpDeHJmzYHOAeyjqFkp-jZ64?usp=sharing">達爾文船零件圖檔</a></p>
 <p><img alt="" height="547" src="/images/下載.png" width="600"/></p>

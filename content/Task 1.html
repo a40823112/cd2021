@@ -133,81 +133,39 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">W7 << <a href='W7.html'>Previous</a> <a href='模擬問題與排解.html'>Next</a> >> 模擬問題與排解<br /><h1>Coppeliasim方向鍵操控模擬</h1>
-<p><span><img alt="" height="402" src="./../images/方向鍵模擬.gif" width="800"/></span></p>
-<p><span>(</span><span>🔽程式碼</span><span>)</span></p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
-    left_handle= sim.getObjectHandle('left_m')
-    right_handle= sim.getObjectHandle('right_m')
-    MaxVel=2
-    leftvelocity=0
-    rightvelocity=0
-    dVel=0.5;
-    sim.setJointTargetVelocity(left_handle,leftvelocity)
-    sim.setJointTargetVelocity(right_handle,rightvelocity)
-end
+    <div id="tipue_search_content">W10 << <a href='W10.html'>Previous</a> <a href='Product Drawing.html'>Next</a> >> Product Drawing<br /><h1>Task 1</h1>
+<p><span>讀取 <a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a> , 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結。</span></p>
+<p><span>(此程式由Stage3-ag1組長 40823131 所製作)</span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"># open file, default is read mode, since txt content no chinese char4
+# no encoding = "UTF-08" is needed
+with open("123.txt") as fh:
+    #匯入txt內容
+    data = fh.readlines()
+    data = [a.replace('4823122','40823122') for a in data]
+    #由於22號座號打錯少打0，給後傳回data
+    data = [b.replace('\t\t\t\t','') for b in data]
+    #第三組的組員只有6人，多讀取了四個空格，因此多了四個\t，將其刪除後匯入data
+    print(data)
+for i in range(len(data)):
+    #(len(data))=6，共有六組
+    group = data[i].rstrip("\n").split("\t")
+    #刪除data中的\n，並將\t作為分隔的依據
+    print('&lt;p&gt;'+group[0]+'|&lt;a href="https://'+group[1]+'.github.io/stage3-ag'+group[0][9]+'"&gt;網站&lt;/a&gt;|&lt;a href="https://github.com/'+group[2]+'/stage3-ag'+group[0][9]+'"&gt;倉儲&lt;/a&gt;&lt;/p&gt;')
+#用for迴圈增添每個小組的超連結網址
+#print : 將字串顯示在螢幕上
+#group[0] :文字檔中每一條第一個值、[1]:文字檔中每一條第二個值
+#group[0][9]:文字檔中每一條第一個值的第九位
  
-function sysCall_actuation() 
-    message,auxiliaryData=sim.getSimulatorMessage()
-    while message~=-1 do
-        if (message==sim.message_keypress) then
-            if (auxiliaryData[1]==32) then
-                -- right key
-                leftvelocity=0
-                rightvelocity=0
-                sim.setJointForce(left_front_handle, 0)
-                sim.setJointForce(right_front_handle, 0)
-                break
-            else
-                sim.setJointForce(left_handle, 10000)
-                sim.setJointForce(right_handle, 10000)
-            end
-            if (auxiliaryData[1]==2007) then
-                -- up key
-                leftvelocity=(leftvelocity+rightvelocity)/2
-                rightvelocity=leftvelocity
-                leftvelocity=leftvelocity+dVel
-                rightvelocity=rightvelocity+dVel
-            end
-            if (auxiliaryData[1]==2008) then
-                -- down key
-                leftvelocity=(leftvelocity+rightvelocity)/2
-                rightvelocity=leftvelocity
-                leftvelocity=leftvelocity-dVel
-                rightvelocity=rightvelocity-dVel
-            end
-            if (auxiliaryData[1]==2009) then
-                -- left key
-                leftvelocity=leftvelocity-dVel
-                rightvelocity=rightvelocity+dVel
-            end
-            if (auxiliaryData[1]==2010) then
-                -- right key
-                leftvelocity=leftvelocity+dVel
-                rightvelocity=rightvelocity-dVel
-            end
-        end
-        message,auxiliaryData=sim.getSimulatorMessage()
-    end
-     
-    if leftvelocity&gt;MaxVel then
-        leftvelocity=MaxVel
-    end
-    if leftvelocity&lt;-MaxVel then
-        leftvelocity=-MaxVel
-    end
-     
-    if rightvelocity&gt;MaxVel then
-                rightvelocity=MaxVel
-    end
-    if rightvelocity&lt;-MaxVel then
-                rightvelocity=-MaxVel
-    end
-     
-    sim.setJointTargetVelocity(left_handle,leftvelocity)
-    sim.setJointTargetVelocity(right_handle,rightvelocity)
-     
-end</pre><br />W7 << <a href='W7.html'>Previous</a> <a href='模擬問題與排解.html'>Next</a> >> 模擬問題與排解</div>
+    for z in range(2,18,2):
+    #range(2,18,2):選取文字檔中的第2格到第18格，每跳兩格選一次
+        try:
+            print('&lt;p&gt;'+group[z]+'|Website:'+'&lt;a href="https://'+group[z]+'.github.io/cd2021'+'"&gt;'+group[z]+'&lt;/a&gt;'+'|Repository:'+'&lt;a href="https://github.com/'+group[z]+'/cd2021'+'"&gt;'+group[z]+'&lt;/a&gt;&lt;/p&gt;')
+            #用for迴圈增添每個組員的超連結網址
+            #group[z] : 選取z跳的值
+        except:
+            continue
+            #由於有一組是6人，在執行程式時會超出範圍影響輸出，所以需用try execot解決</pre>
+<p><span></span></p><br />W10 << <a href='W10.html'>Previous</a> <a href='Product Drawing.html'>Next</a> >> Product Drawing</div>
         
     <!-- footer -->
       <div class="container">
