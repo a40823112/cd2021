@@ -252,9 +252,7 @@ for i in range(len(data)):
     #(len(data))=6，共有六組
     group = data[i].rstrip("\n").split("\t")
     #刪除data中的\n，並將\t作為分隔的依據
-    print('</pre>
-<p>'+group[0]+'|<a href="https://'+group[1]+'.github.io/stage3-ag'+group[0][9]+'">網站</a>|<a href="https://github.com/'+group[2]+'/stage3-ag'+group[0][9]+'">倉儲</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">')
+    print('&lt;p&gt;'+group[0]+'|&lt;a href="https://'+group[1]+'.github.io/stage3-ag'+group[0][9]+'"&gt;網站&lt;/a&gt;|&lt;a href="https://github.com/'+group[2]+'/stage3-ag'+group[0][9]+'"&gt;倉儲&lt;/a&gt;&lt;/p&gt;')
 #用for迴圈增添每個小組的超連結網址
 #print : 將字串顯示在螢幕上
 #group[0] :文字檔中每一條第一個值、[1]:文字檔中每一條第二個值
@@ -263,15 +261,13 @@ for i in range(len(data)):
     for z in range(2,18,2):
     #range(2,18,2):選取文字檔中的第2格到第18格，每跳兩格選一次
         try:
-            print('</pre>
-<p>'+group[z]+'|Website:'+'<a href="https://'+group[z]+'.github.io/cd2021'+'">'+group[z]+'</a>'+'|Repository:'+'<a href="https://github.com/'+group[z]+'/cd2021'+'">'+group[z]+'</a></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">')
+            print('&lt;p&gt;'+group[z]+'|Website:'+'&lt;a href="https://'+group[z]+'.github.io/cd2021'+'"&gt;'+group[z]+'&lt;/a&gt;'+'|Repository:'+'&lt;a href="https://github.com/'+group[z]+'/cd2021'+'"&gt;'+group[z]+'&lt;/a&gt;&lt;/p&gt;')
             #用for迴圈增添每個組員的超連結網址
             #group[z] : 選取z跳的值
         except:
             continue
-            #由於有一組是6人，在執行程式時會超出範圍影響輸出，所以需用try execot解決
-</pre><h1>Product Drawing</h1>
+            #由於有一組是6人，在執行程式時會超出範圍影響輸出，所以需用try execot解決</pre>
+<p></p><h1>Product Drawing</h1>
 <h2>stage1-ag10</h2>
 <p>Inventor:<a href="https://drive.google.com/drive/folders/1OMjDAU-FfpDeHJmzYHOAeyjqFkp-jZ64?usp=sharing">達爾文船零件圖檔</a></p>
 <p><img alt="" height="547" src="/images/下載.png" width="600"/></p>
