@@ -133,18 +133,86 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">利用SSH維護倉儲 << <a href='利用SSH維護倉儲.html'>Previous</a> <a href='建立Leo編輯Palican.html'>Next</a> >> 建立Leo編輯Palican<br /><h1>建立倉儲</h1>
-<p><strong>Step1:</strong>在mdecourse的cmstemplate倉儲下按<em><strong>Use this template</strong></em></p>
-<p><em><strong><img alt="" height="444" src="./../images/step1.jpg" width="600"/></strong></em></p>
-<p><strong>Step2:</strong>在<em><strong>Repository name</strong></em>中輸入cd2021</p>
-<p><img alt="" height="434" src="./../images/step2.jpg" width="600"/></p>
-<p><strong>Step3:</strong>在Y槽的tmp目錄下clone倉儲，在編輯器中輸入</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/學號/cd2021.git</pre>
-<p><strong>Step4:</strong>利用編輯器在cd2021目錄下輸入</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">python wsgi.py</pre>
-<p><img alt="" height="549" src="./../images/step4.jpg" width="600"/></p>
-<p>倉儲建立完成</p>
-<br />利用SSH維護倉儲 << <a href='利用SSH維護倉儲.html'>Previous</a> <a href='建立Leo編輯Palican.html'>Next</a> >> 建立Leo編輯Palican</div>
+    <div id="tipue_search_content">W8 << <a href='W8.html'>Previous</a> <a href='模擬問題和排解.html'>Next</a> >> 模擬問題和排解<br /><h1>Coppeliasim避障自走車</h1>
+<p><strong>模擬影片</strong></p>
+<p><img alt="" height="327" src="./../images/障礙物模擬.gif" width="650"/></p>
+<p><span>(</span><span>🔽程式碼</span><span>)</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+     
+     
+end
+ 
+function sysCall_actuation()
+     
+end
+ 
+function sysCall_sensing()
+     
+end
+ 
+function sysCall_cleanup()
+     
+end
+ 
+ 
+ 
+function sysCall_afterDelete(inData)
+    for key,value in pairs(inData.objectHandles) do
+        print("Object with handle "..key.." was deleted")
+    end
+     
+end
+ 
+function sysCall_afterCreate(inData)
+    for key,value in pairs(inData.objectHandles) do
+        print("Object with handle "..value.." was created")
+    end
+end
+--]]
+function speedChange_callback(ui,id,newVal)
+    speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
+end
+ 
+function sysCall_init()
+     
+    bubbleRobBase=sim.getObjectAssociatedWithScript(sim.handle_self) 
+    leftMotor=sim.getObjectHandle("bubbleRob_leftMotor") 
+    rightMotor=sim.getObjectHandle("bubbleRob_rightMotor") 
+    noseSensor=sim.getObjectHandle("bubbleRob_sensingNose") 
+    minMaxSpeed={120*math.pi/180,300*math.pi/180} 
+    backUntilTime=-1 
+    
+        xml = '&lt;ui activate="false" closeable="false" resizeable="false" title="'..sim.getObjectName(bubbleRobBase)..' speed"&gt;'..[[
+        &lt;hslider id="1" maximum="100" minimum="0" onchange="speedChange_callback"&gt;&lt;/hslider&gt;
+        &lt;label style="* {margin-left: 300px;" text=""&gt;&lt;/label&gt;
+        &lt;/ui&gt;
+        ]]
+    ui=simUI.create(xml)
+    speed=(minMaxSpeed[1]+minMaxSpeed[2])*1
+    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
+end
+ 
+function sysCall_actuation()
+    result=sim.readProximitySensor(noseSensor) 
+     
+    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end 
+ 
+    if (backUntilTime&lt;sim.getSimulationTime()) then
+         
+        sim.setJointTargetVelocity(leftMotor,speed)
+        sim.setJointTargetVelocity(rightMotor,speed)
+    else
+         
+        sim.setJointTargetVelocity(leftMotor,-speed/5)
+        sim.setJointTargetVelocity(rightMotor,-speed/200)
+    end
+end
+ 
+function sysCall_cleanup()
+    simUI.destroy(ui)
+end</pre>
+<p><br/><br/></p>
+<br />W8 << <a href='W8.html'>Previous</a> <a href='模擬問題和排解.html'>Next</a> >> 模擬問題和排解</div>
         
     <!-- footer -->
       <div class="container">

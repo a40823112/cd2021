@@ -234,7 +234,91 @@ end</pre><h3>模擬問題與排解</h3>
 <p><span><span><img alt="" height="125" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84%E6%8E%92%E5%88%97.jpg" width="200"/></span></span></p>
 <p><span><span><img alt="" height="701" src="https://a40823112.github.io/stage2-ag1/images/w7%E6%94%B9%E5%96%84skin.jpg" width="600"/></span></span></p>
 <p></p>
-<h2>W8</h2><h2>W10</h2>
+<h2>W8</h2>
+<h3>Coppeliasim避障自走車</h3>
+<p><strong>模擬影片</strong></p>
+<p><img alt="" height="327" src="/images/障礙物模擬.gif" width="650"/></p>
+<p><span>(</span><span>🔽程式碼</span><span>)</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+     
+     
+end
+ 
+function sysCall_actuation()
+     
+end
+ 
+function sysCall_sensing()
+     
+end
+ 
+function sysCall_cleanup()
+     
+end
+ 
+ 
+ 
+function sysCall_afterDelete(inData)
+    for key,value in pairs(inData.objectHandles) do
+        print("Object with handle "..key.." was deleted")
+    end
+     
+end
+ 
+function sysCall_afterCreate(inData)
+    for key,value in pairs(inData.objectHandles) do
+        print("Object with handle "..value.." was created")
+    end
+end
+--]]
+function speedChange_callback(ui,id,newVal)
+    speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
+end
+ 
+function sysCall_init()
+     
+    bubbleRobBase=sim.getObjectAssociatedWithScript(sim.handle_self) 
+    leftMotor=sim.getObjectHandle("bubbleRob_leftMotor") 
+    rightMotor=sim.getObjectHandle("bubbleRob_rightMotor") 
+    noseSensor=sim.getObjectHandle("bubbleRob_sensingNose") 
+    minMaxSpeed={120*math.pi/180,300*math.pi/180} 
+    backUntilTime=-1 
+    
+        xml = '&lt;ui activate="false" closeable="false" resizeable="false" title="'..sim.getObjectName(bubbleRobBase)..' speed"&gt;'..[[
+        &lt;hslider id="1" maximum="100" minimum="0" onchange="speedChange_callback"&gt;&lt;/hslider&gt;
+        &lt;label style="* {margin-left: 300px;" text=""&gt;&lt;/label&gt;
+        &lt;/ui&gt;
+        ]]
+    ui=simUI.create(xml)
+    speed=(minMaxSpeed[1]+minMaxSpeed[2])*1
+    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
+end
+ 
+function sysCall_actuation()
+    result=sim.readProximitySensor(noseSensor) 
+     
+    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end 
+ 
+    if (backUntilTime&lt;sim.getSimulationTime()) then
+         
+        sim.setJointTargetVelocity(leftMotor,speed)
+        sim.setJointTargetVelocity(rightMotor,speed)
+    else
+         
+        sim.setJointTargetVelocity(leftMotor,-speed/5)
+        sim.setJointTargetVelocity(rightMotor,-speed/200)
+    end
+end
+ 
+function sysCall_cleanup()
+    simUI.destroy(ui)
+end</pre>
+<p><br/><br/></p>
+<h3>模擬問題和排解</h3>
+<p><img alt="" height="327" src="/images/感測無法做動.gif" width="650"/></p>
+<p><strong>問題原因:</strong>與組員討論後發現，<span>感測器都沒有發生問題，不會做動的原因是程式打錯才無法驅動馬達。</span></p>
+<p></p>
+<p><strong>問題排解:</strong>更改產品物件的程式碼即可。</p><h2>W10</h2>
 <h3>Task 1</h3>
 <p><span>讀取 <a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a> , 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結。</span></p>
 <p><span>(此程式由Stage3-ag1組長 40823131 所製作)</span></p>
