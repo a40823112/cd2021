@@ -393,7 +393,89 @@ for i in range(len(data)):
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8XAT6MWlmIQ" title="YouTube video player" width="560"></iframe></p>
 <p></p>
 <p><strong>CoppeliaSim child script :</strong></p>
+<p><img alt="" height="541" src="/images/copp boat.jpg" width="700"/></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
+	-- Put your thread code here (initialization and clean-up code should not be in here)
+
+	
+	-- Some EXTERNAL commands (e.g. socket commands provided by Lua libraries)
+	-- might appear as blocking to the simulator. In that case, you can define
+	-- a non-blocking section as following example shows:
+	--
+	-- sim.setThreadIsFree(true) -- Start of the non-blocking section
+	--
+	-- Following 2 lines are meant as an example of EXTERNAL blocking commands:
+	-- http = require("socket.http")
+	-- print(http.request("http://www.google.com"))
+	--
+	-- sim.setThreadIsFree(false) -- End of the non-blocking section
+	--
+	-- While in a non-blocking section, try to avoid calling sim-functions. Also
+	-- never forget to close the blocking section, otherwise V-REP will hang.
+	-- Make sure you read the information related to the sim.setThreadIsFree
+	-- API function in V-REP's documentation.
+
+
+	-- If you wish to synchronize a threaded loop with each simulation pass,
+	-- set the thread switch timing in the initialization phase of this script
+	-- to the maximum (200), and manually switch thread here with the
+	-- sim.switchThread() command. 
+	-- ( sim.switchThread() will suspend this script's execution until next
+	-- simulation pass, i.e. until the simulation time has changed )
+	--
+	-- Following example illustrates this:
+	-- 
+	-- while true do
+	--     local p=sim.getObjectPosition(objHandle,-1)
+	--     p[1]=p[1]+0.001
+	--     sim.setObjectPosition(objHandle,-1,p)
+	--     sim.switchThread()
+	-- end
+end
+
+-- Put some initialization code here:
+sim.setThreadSwitchTiming(2) -- Default timing for automatic thread switching
+
+-- Here we execute the regular thread code:
+res,err=xpcall(threadFunction,function(err) return debug.traceback(err) end)
+if not res then
+	sim.addStatusbarMessage('Lua runtime error: '..err)
+end
+
+-- Put some clean-up code here:
+simRemoteApi.start(19999)
+</pre>
 <p></p>
+<p><strong>Python Remote API :</strong></p>
+<p><strong><img alt="" height="730" src="/images/boat python.jpg" width="569"/></strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sim as vrep
+import sys
+# child threaded script: 
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19999, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,boat_motor_handle=vrep.simxGetObjectHandle(clientID,'boat_motor',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,boat_motor_handle,-10, vrep.simx_opmode_oneshot_wait)</pre>
+<p></p><h3>task 2-2</h3>
+<p><strong>Stage2-ag1 Remote API 操控</strong></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/fJ7Ux-6kHt0" title="YouTube video player" width="560"></iframe></p>
+<p></p>
+<p><strong>CoppeliaSim child script :</strong></p>
+<p><img alt="" height="541" src="/images/copp boat.jpg" width="700"/></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
 	-- Put your thread code here (initialization and clean-up code should not be in here)
 
@@ -463,15 +545,18 @@ else:
     print('Connection not successful')
     sys.exit('Could not connect')
  
-errorCode,boat_motor_handle=vrep.simxGetObjectHandle(clientID,'boat_motor',vrep.simx_opmode_oneshot_wait)
+errorCode,left_m_handle=vrep.simxGetObjectHandle(clientID,'left_m',vrep.simx_opmode_oneshot_wait)
+ 
+errorCode,right_m_handle=vrep.simxGetObjectHandle(clientID,'right_m',vrep.simx_opmode_oneshot_wait)
  
 if errorCode == -1:
-    print('Can not find motor')
+    print('Can not find left or right motor')
     sys.exit()
  
-errorCode=vrep.simxSetJointTargetVelocity(clientID,boat_motor_handle,-10, vrep.simx_opmode_oneshot_wait)</pre>
-<p></p><h3>task 2-2</h3>
-<h1>Product Drawing</h1>
+errorCode=vrep.simxSetJointTargetVelocity(clientID,left_m_handle,-1, vrep.simx_opmode_oneshot_wait)
+errorCode=vrep.simxSetJointTargetVelocity(clientID,right_m_handle,-1, vrep.simx_opmode_oneshot_wait)
+</pre>
+<p></p><h1>Product Drawing</h1>
 <h2>stage1-ag10</h2>
 <p>Inventor:<a href="https://drive.google.com/drive/folders/1OMjDAU-FfpDeHJmzYHOAeyjqFkp-jZ64?usp=sharing">達爾文船零件圖檔</a></p>
 <p><img alt="" height="547" src="/images/下載.png" width="600"/></p>
