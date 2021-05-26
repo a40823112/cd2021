@@ -10,7 +10,7 @@
 <p><span>何謂協同??</span></p>
 <p><span>協同設計與版次管理能夠有效提升團隊工作效率，降低內容互相覆蓋，最終造成無法辨識是誰更改內容的情況。</span></p>
 <p><span>每一個協同者製作與更改的項目都會顯示在上面，不怕後者更新會覆蓋前者所製作的，還能輕易地找出之前所做的每一項目。</span></p>
-<p><a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">與組長協同倉儲教學</a></p>
+<p><a href="https://a40823112.github.io/cd2021/content/%E5%8D%94%E5%90%8C%E5%80%89%E5%84%B2.html">與組長協同倉儲教學</a></p>
 <p><span><img alt="" height="619" src="/images/Synergy-1.jpg" width="850"/></span></p>
 <p><span></span>(此圖為40823145在 stage2 ag1 所製作)</p>
 <p></p><h1>Course Content</h1>
@@ -388,7 +388,89 @@ for i in range(len(data)):
 <p></p>
 <h2>W11</h2>
 <h3>task 2-1</h3>
-<h3>task 2-2</h3>
+<p><strong>Stage-ag10 Remote API 操控</strong></p>
+<p>由於我們設計的產品只有一個轉軸，所以只須設定一個變數。</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8XAT6MWlmIQ" title="YouTube video player" width="560"></iframe></p>
+<p></p>
+<p><strong>CoppeliaSim child script :</strong></p>
+<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
+	-- Put your thread code here (initialization and clean-up code should not be in here)
+
+	
+	-- Some EXTERNAL commands (e.g. socket commands provided by Lua libraries)
+	-- might appear as blocking to the simulator. In that case, you can define
+	-- a non-blocking section as following example shows:
+	--
+	-- sim.setThreadIsFree(true) -- Start of the non-blocking section
+	--
+	-- Following 2 lines are meant as an example of EXTERNAL blocking commands:
+	-- http = require("socket.http")
+	-- print(http.request("http://www.google.com"))
+	--
+	-- sim.setThreadIsFree(false) -- End of the non-blocking section
+	--
+	-- While in a non-blocking section, try to avoid calling sim-functions. Also
+	-- never forget to close the blocking section, otherwise V-REP will hang.
+	-- Make sure you read the information related to the sim.setThreadIsFree
+	-- API function in V-REP's documentation.
+
+
+	-- If you wish to synchronize a threaded loop with each simulation pass,
+	-- set the thread switch timing in the initialization phase of this script
+	-- to the maximum (200), and manually switch thread here with the
+	-- sim.switchThread() command. 
+	-- ( sim.switchThread() will suspend this script's execution until next
+	-- simulation pass, i.e. until the simulation time has changed )
+	--
+	-- Following example illustrates this:
+	-- 
+	-- while true do
+	--     local p=sim.getObjectPosition(objHandle,-1)
+	--     p[1]=p[1]+0.001
+	--     sim.setObjectPosition(objHandle,-1,p)
+	--     sim.switchThread()
+	-- end
+end
+
+-- Put some initialization code here:
+sim.setThreadSwitchTiming(2) -- Default timing for automatic thread switching
+
+-- Here we execute the regular thread code:
+res,err=xpcall(threadFunction,function(err) return debug.traceback(err) end)
+if not res then
+	sim.addStatusbarMessage('Lua runtime error: '..err)
+end
+
+-- Put some clean-up code here:
+simRemoteApi.start(19999)
+</pre>
+<p></p>
+<p><strong>Python Remote API :</strong></p>
+<p><strong></strong></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import sim as vrep
+import sys
+# child threaded script: 
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19999, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,boat_motor_handle=vrep.simxGetObjectHandle(clientID,'boat_motor',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,boat_motor_handle,-10, vrep.simx_opmode_oneshot_wait)</pre>
+<p></p><h3>task 2-2</h3>
 <h1>Product Drawing</h1>
 <h2>stage1-ag10</h2>
 <p>Inventor:<a href="https://drive.google.com/drive/folders/1OMjDAU-FfpDeHJmzYHOAeyjqFkp-jZ64?usp=sharing">達爾文船零件圖檔</a></p>
