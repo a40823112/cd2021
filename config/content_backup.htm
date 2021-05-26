@@ -10,11 +10,10 @@
 <p><span>何謂協同??</span></p>
 <p><span>協同設計與版次管理能夠有效提升團隊工作效率，降低內容互相覆蓋，最終造成無法辨識是誰更改內容的情況。</span></p>
 <p><span>每一個協同者製作與更改的項目都會顯示在上面，不怕後者更新會覆蓋前者所製作的，還能輕易地找出之前所做的每一項目。</span></p>
-<p></p>
+<p><a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">與組長協同倉儲教學</a></p>
 <p><span><img alt="" height="619" src="/images/Synergy-1.jpg" width="850"/></span></p>
 <p><span></span>(此圖為40823145在 stage2 ag1 所製作)</p>
-<p></p>
-<h1>Course Content</h1>
+<p></p><h1>Course Content</h1>
 <h2>W1</h2>
 <h3>利用SSH維護倉儲</h3>
 <p><strong><span color="blue" size="3" style="color: blue; font-size: large;">新增鑰匙:</span></strong></p>
@@ -83,7 +82,20 @@ set GIT_SSH=%Disk%:\putty\plink.exe</pre>
 <p><strong>Step8:</strong>更改完後，在編輯器上輸入就可push</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">pelican markdown -o blog -s local_publishconf.py
 pelican markdown -o blog -s publishconf.py</pre>
-<h2>W2</h2>
+<h3>協同倉儲</h3>
+<p><strong>Step 1 :</strong>進入倉儲的setting，並選擇<span>Manage access</span></p>
+<p><span><img alt="" height="393" src="/images/Manage access.jpg" width="850"/></span></p>
+<p><span><strong>Step 2 :</strong>點選<strong> Invite a collaboratot</strong></span></p>
+<p><span><span><img alt="" height="393" src="/images/Invite a collaboratot.jpg" width="850"/></span></span></p>
+<p><span><span><strong>Step 3 : 組長與組員互相邀請</strong></span></span></p>
+<p><span><span><strong>1.組長 </strong>需輸入組員github名稱</span></span></p>
+<p><span><span><strong>2.組員 </strong><span>需輸入組員github名稱</span></span></span></p>
+<p><span><span><img alt="" height="319" src="/images/Invite a collaboratot name.jpg" width="532"/></span></span></p>
+<p><span><span><strong>Step 4 : </strong>組員clone組長倉儲並在倉儲下輸入 </span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/組長/stage2-ag1.git stage2-ag1      clone組長倉儲
+cd stage2-ag1
+git remote add 組員 https://github.com/40823145/stage2-ag1.git     git add自己倉儲</pre>
+<p></p><h2>W2</h2>
 <h3>Project production</h3>
 <p>與隊友討論後決定製作 <em><strong>Da Vinci's Paddle Boat </strong></em></p>
 <p><em><strong><span>進度規劃:</span></strong></em></p>

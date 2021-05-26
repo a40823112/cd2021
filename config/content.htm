@@ -82,7 +82,21 @@ set GIT_SSH=%Disk%:\putty\plink.exe</pre>
 <p><strong>Step8:</strong>更改完後，在編輯器上輸入就可push</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">pelican markdown -o blog -s local_publishconf.py
 pelican markdown -o blog -s publishconf.py</pre>
-<h2>W2</h2>
+<h3>協同倉儲</h3>
+<p><strong>Step 1 :</strong>進入倉儲的setting，並選擇<span>Manage access</span></p>
+<p><span><img alt="" height="393" src="/images/Manage access.jpg" width="850"/></span></p>
+<p><span><strong>Step 2 :</strong>點選<strong> Invite a collaboratot</strong></span></p>
+<p><span><span><img alt="" height="393" src="/images/Invite a collaboratot.jpg" width="850"/></span></span></p>
+<p><span><span><strong>Step 3 : 組長與組員互相邀請</strong></span></span></p>
+<p><span><span><strong>1.組長 </strong>需輸入組員github名稱</span></span></p>
+<p><span><span><strong>2.組員 </strong><span>需輸入組員github名稱</span></span></span></p>
+<p><span><span><img alt="" height="319" src="/images/Invite a collaboratot name.jpg" width="532"/></span></span></p>
+<p><span><span><strong>Step 4 : </strong>組員clone組長倉儲並在倉儲下輸入 </span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/組長/stage2-ag1.git stage2-ag1      clone組長倉儲
+cd stage2-ag1
+git remote add 組員 https://github.com/40823145/stage2-ag1.git     git add自己倉儲</pre>
+<p></p>
+<p>⭐⭐組員在push時，若需要上傳至小組倉儲則輸入<strong>git push ，</strong>而要上傳至自己倉儲時則輸入<strong>git push 組員</strong></p><h2>W2</h2>
 <h3>Project production</h3>
 <p>與隊友討論後決定製作 <em><strong>Da Vinci's Paddle Boat </strong></em></p>
 <p><em><strong><span>進度規劃:</span></strong></em></p>
