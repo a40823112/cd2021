@@ -1,0 +1,351 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>CMSiMDE</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                <h1>40823112 cd2021</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">40823112 cd2021</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">Site Map</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li><a href='Introduction.html'>Introduction</a><li><a href='Collaboration.html'>Collaboration</a><li class='has-children'><a href='Course Content.html'>Course Content</a><ul class='dropdown'><li class='has-children'><a href='W1.html'>W1</a><ul class='dropdown'><li><a href='利用SSH維護倉儲.html'>利用SSH維護倉儲</a><li><a href='建立倉儲.html'>建立倉儲</a><li><a href='建立Leo編輯Palican.html'>建立Leo編輯Palican</a><li><a href='協同倉儲.html'>協同倉儲</a></li></ul><li class='has-children'><a href='W2.html'>W2</a><ul class='dropdown'><li><a href='Project production.html'>Project production</a><li><a href='手繪草稿.html'>手繪草稿</a><li><a href='初步設計與討論.html'>初步設計與討論</a></li></ul><li class='has-children'><a href='W3.html'>W3</a><ul class='dropdown'><li><a href='錯誤排解 齒輪方向與速度.html'>錯誤排解 齒輪方向與速度</a><li><a href='錯誤排解 傳動改正.html'>錯誤排解 傳動改正</a><li><a href='產品簡化.html'>產品簡化</a><li><a href='完成品.html'>完成品</a></li></ul><li class='has-children'><a href='W4.html'>W4</a><ul class='dropdown'><li><a href='2D工程圖.html'>2D工程圖</a><li><a href='3D爆炸圖.html'>3D爆炸圖</a><li><a href='產品設計報告與影片.html'>產品設計報告與影片</a></li></ul><li class='has-children'><a href='W5.html'>W5</a><ul class='dropdown'><li><a href='Stage2 Grouping.html'>Stage2 Grouping</a><li><a href='進度規劃.html'>進度規劃</a></li></ul><li class='has-children'><a href='W6.html'>W6</a><ul class='dropdown'><li><a href='討論.html'>討論</a></li></ul><li class='has-children'><a href='W7.html'>W7</a><ul class='dropdown'><li><a href='Coppeliasim方向鍵操控模擬.html'>Coppeliasim方向鍵操控模擬</a><li><a href='模擬問題與排解.html'>模擬問題與排解</a></li></ul><li class='has-children'><a href='W8.html'>W8</a><ul class='dropdown'><li><a href='Coppeliasim避障自走車.html'>Coppeliasim避障自走車</a><li><a href='模擬問題和排解.html'>模擬問題和排解</a></li></ul><li class='has-children'><a href='W9.html'>W9</a><ul class='dropdown'><li><a href='產品報告與模擬影片.html'>產品報告與模擬影片</a></li></ul><li class='has-children'><a href='W10.html'>W10</a><ul class='dropdown'><li><a href='Task 1.html'>Task 1</a></li></ul><li class='has-children'><a href='W11.html'>W11</a><ul class='dropdown'><li><a href='task 2-1.html'>task 2-1</a><li><a href='task 2-2.html'>task 2-2</a></li></ul><li class='has-children'><a href='W15.html'>W15</a><ul class='dropdown'><li><a href='Geometry Translation.html'>Geometry Translation</a></li></li></ul></ul><li class='has-children'><a href='Product Drawing.html'>Product Drawing</a><ul class='dropdown'><li><a href='stage1-ag10.html'>stage1-ag10</a><li><a href='stage2-ag1.html'>stage2-ag1</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">W15 << <a href='W15.html'>Previous</a> <a href='Product Drawing.html'>Next</a> >> Product Drawing<br /><h1>Geometry Translation</h1>
+<p>Inverse kinematics for a 2-joint robot arm using geometry <strong>翻譯</strong></p>
+<p><span></span></p>
+<p><span><strong>0:05</strong><br/> We saw this simple two-link robot in the previous lecture about forward kinematics.</span></p>
+<p>我們在上一堂關於正向運動學的課程中看到這個簡單的雙連桿機構。</p>
+<p><span>Kinematics : </span>運動學</p>
+<p><strong>0:10</strong></p>
+<p><span>The tooltip pose of this robot is described simply by two numbers, the coordinates x and y with respect to the world coordinate frame.</span></p>
+<p>該機構的提示框由兩個數字簡單描述，相對於世界坐標系的坐標<span> x </span>和<span> y</span>。</p>
+<p><span>Tooltip : </span>提示框</p>
+<p><strong>0:19</strong></p>
+<p><span>So, the problem here is that given x and y, we want to determine the joined angles, q1 and q2.</span></p>
+<p>所以，這裡的問題是給定<span>x</span>和<span>y</span>，我們要判斷連接角<span>q1</span>和<span>q2</span>。</p>
+<p><strong>0:25</strong></p>
+<p><span>The solution that we’re going to follow in this particular section is a geometric one.</span></p>
+<p>我們利用特定幾何來解決此方案。</p>
+<p><strong>0:29</strong></p>
+<p><span>We’re going to start with a simple piece of construction.</span></p>
+<p>我們從一個簡單的結構開始。</p>
+<p><strong>0:31</strong></p>
+<p><span>We’re going to overlay the red triangle on top of our robot.</span></p>
+<p>我們在機構上覆蓋紅色三角形。</p>
+<p><strong>0:35</strong></p>
+<p><span>We know that the end point coordinate is x, y, so the vertical height of the triangle is y, the horizontal width is x.</span></p>
+<p>我們知道終點坐標是<span>x</span>，<span>y</span>，所以三角形的垂直高度是<span>y</span>，水平寬度是<span>x</span>。</p>
+<p><strong>0:43</strong></p>
+<p><span>And, using Pythagoras theorem, we can write r squared equals x squared plus y squared.</span></p>
+<p>利用畢氏定理<span>(Pythagorean theorem)</span>，我們可寫出 r² = x ²+ y²</p>
+<p><strong>0:50</strong></p>
+<p><span>So far, so easy.</span></p>
+<p>到目前為止很容易。</p>
+<p><strong>0:51</strong></p>
+<p><span>Now, w’re going to look at this triangle highlighted here in red and we want to determine the angle alpha.</span></p>
+<p>現在，我們查看此凸顯的紅色三角形，並確定α角。</p>
+<p><strong>0:58</strong></p>
+<p><span>In order to do that, we need to use the cosine rule.</span></p>
+<p>為了做到這一點，我們須使用餘弦定理<span> (Law of cosines)</span>。</p>
+<p><strong>1:01</strong></p>
+<p><span>And, if you’re a little rusty on the cosine rule, here is a bit of a refresher.</span></p>
+<p>如果你對餘弦定理有點生疏，這裡幫以複習一點點。</p>
+<p><strong>1:06</strong></p>
+<p><span>We have an arbitrary triangle.</span></p>
+<p>有一個任意三角形。</p>
+<p><strong>1:08</strong></p>
+<p><span>We don’t have any right angles in it and we’re going to label the length of this edge as A and the angle opposite that edge, we’re going to label as little a.</span></p>
+<p>我們沒有任何的直角，將這邊的角度標為小<span>a</span>，而對邊的長度標為<span>A</span>。</p>
+<p><strong>1:16</strong></p>
+<p><span>And, we do the same for this edge and this angle, and this edge and this angle.</span></p>
+<p>我們再對這邊和這個角，以及這邊和這個叫做同樣的事。</p>
+<p><strong>1:21</strong></p>
+<p><span>So, all together, the sides are labelled capitals A, B and C, and the angles are labelled little a, little b, and little c.</span></p>
+<p>因此所有邊都標記為<span>A, B, C</span>，角都標記為<span>a, b, c </span>。</p>
+<p><strong>1:30</strong></p>
+<p><span>So, the cosine rule is simply this relationship here.</span></p>
+<p>餘弦定理就是這種關係。</p>
+<p><strong>1:33</strong></p>
+<p><span>It’s a bit like Pythagoras’ theorem except for this extra term on the end with the cos a in it.</span></p>
+<p>它有點像畢達哥拉斯定理，除了末尾有<span>cos a</span>。</p>
+<p><strong>1:39</strong></p>
+<p><span>Now, let’s apply the cosine rule to the particular triangle we looked at a moment ago.</span></p>
+<p>將餘弦定理應用在剛看到的特定三角形。</p>
+<p><strong>1:45</strong></p>
+<p><span>It’s pretty straightforward to write down this particular relationship.</span></p>
+<p>寫下此特殊關係很簡單。</p>
+<p><strong>1:48</strong></p>
+<p><span>We can isolate the term cos alpha which gives us the angle alpha that we’re interested in.</span></p>
+<p>我們可分離出<span> cos</span>α ，它給我們需要的α角度。</p>
+<p><strong>1:53</strong></p>
+<p><span>And, it’s defined in terms of the constant link lengths, A1 and A2 and the position of the end effector, x and y.</span></p>
+<p>它是根據恆定連趕長度<span>A1</span>和<span>A2</span>以及末端執行器的位置<span>x</span>和<span>y</span>定義。</p>
+<p><strong>2:02</strong></p>
+<p><span>We can write this simple relationship between the angles alpha and q2.</span></p>
+<p>我們可寫出角度α和<span>q2</span>之間的簡單關係。</p>
+<p><strong>2:07</strong></p>
+<p><span>And, we know from the shape of the cosine function that cos of q2 must be equal to negative of cos alpha.</span></p>
+<p>並且我們從餘弦函數中得知<span>cos q2</span>必須等於 <span>–cos </span>α。</p>
+<p><strong>2:13</strong></p>
+<p><span>This time, let’s just write an expression for the cosine of the joined angle q2.</span></p>
+<p>寫餘弦在連接角q2的表達式。</p>
+<p><strong>2:18</strong></p>
+<p><span>Now, we’re going to draw yet another red triangle and we’re going apply some simple trigonometry here.</span></p>
+<p>我們繪製另一個紅色三角形，並應用三角函數。</p>
+<p><strong>2:24</strong></p>
+<p><span>If we know q2, then we know this length and this length of the red triangle.</span></p>
+<p>如果我們知道<span>q2</span>，就可知道這個長度和這個三角形的長度。</p>
+<p><strong>2:29</strong></p>
+<p><span>We can write this relationship for the sine of the joined angle q2.</span></p>
+<p>我們可以在連接角<span>q2</span>寫出正弦關係。</p>
+<p><strong>2:33</strong></p>
+<p><span>Now, we can consider this bigger triangle whose angle is beta and this side length of this triangle is given here in blue.</span></p>
+<p>現在我們考慮這個大三角形，角度是β，此三角形的邊長由藍色表示。</p>
+<p><strong>2:42</strong></p>
+<p><span>And, the length of the other side of the triangle is this.</span></p>
+<p>且三角形另一邊長度是這個。</p>
+<p><strong>2:45</strong></p>
+<p><span>So, now we can write an expression for the angle beta in terms of these parameters here.</span></p>
+<p>我們可在此根據參數寫出角度β的表達式。</p>
+<p><strong>2:52</strong></p>
+<p><span>Going back to the red triangle that we drew earlier, we can establish a relationship between q1 and the angle beta.</span></p>
+<p>回到之前畫的三角形，我們可建立出<span>q1</span>和β的關係。</p>
+<p><strong>2:59</strong></p>
+<p><span>Introduce yet another angle, this one gamma and we can write a relationship between the angle gamma and the tooltip coordinates x and y.</span></p>
+<p>引入另一個角度<span>ɣ</span>，可寫出角度<span>ɣ</span>和提示座標<span>x</span>和<span>y</span>之間的關係。</p>
+<p><strong>3:09</strong></p>
+<p><span>Now, we can write a simple relationship between the angles that we’ve constructed, gamma and beta and the joined angle we’re interested in which is q1.</span></p>
+<p>現在我們可建構出角度β和<span>ɣ</span>與連接角度<span>q1</span>之間的關係。</p>
+<p><strong>3:17</strong></p>
+<p><span>And, the total relationship looks something like this.</span></p>
+<p>而且，整個關係看起來像這樣。</p>
+<p><strong>3:20</strong></p>
+<p><span>Quite a complex relationship, it gives us the angle of joined one, that’s q1 in terms of the end effector coordinates y and x, and a bunch of constants, a1 and a2, and it’s also a function of the second joint angle, q2.</span></p>
+<p>相當複雜的關係，它提供連接的角度，即末端執行器坐標<span> y </span>和<span> x </span>的<span> q1</span>，以及一系列常數<span> a1 </span>和<span> a2</span>，它也是第二個關節角度<span> q2 </span>的函數。</p>
+<p><strong>3:36</strong></p>
+<p><span>So, let’s summarize what it is that we have derived here.</span></p>
+<p>所以，總結我們在這裡得出了什麼。</p>
+<p><strong>3:40</strong></p>
+<p><span>We have an expression for the cosine of q2 and we have an expression for q1.</span></p>
+<p>我們有<span>q1</span>和<span>cosq2</span>方程式。</p>
+<p><strong>3:45</strong></p>
+<p><span>Now, the cosine function is symmetrical about 0.</span></p>
+<p>餘弦函數在<span>0</span>對稱。</p>
+<p><strong>3:49</strong></p>
+<p><span>So, if we know the value of the cosine of q2, then there are two possible solutions a positive angle and a negative angle.</span></p>
+<p>所以我們知道<span>cosq2</span>的值可能為正角和負角。</p>
+<p><strong>3:57</strong></p>
+<p><span>We’re going to explicitly choose the positive angle. Which means that I can write this expression here.</span></p>
+<p>我們選擇正角，表示我可以寫出此表達式。</p>
+<p><strong>4:03</strong></p>
+<p><span>And now, we have what we call the inverse kinematic solution for this two-link robot.</span></p>
+<p>現在我們能用逆向運動學來解決雙連桿機構。</p>
+<p><strong>4:08</strong></p>
+<p><span>We have an expression for the two joined angles, q1 and q2 in terms of the end effector pose x and y, and a bunch of constants.</span></p>
+<p>我們有兩個連接角<span> q1 </span>和<span> q2 </span>的表達式，根據末端執行器<span>x </span>和<span> y </span>以及一系列常量。</p>
+<p><strong>4:17</strong></p>
+<p><span>You notice that the two equations are not independent.</span></p>
+<p>注意到兩方程式不是獨立的。</p>
+<p><strong>4:19</strong></p>
+<p><span>The equation for q1, in fact, depends on the solution for q2.</span></p>
+<p>事實上，<span>q1</span>方程式取決於<span>q2</span>的解。</p>
+<p><strong>4:23</strong></p>
+<p><span>In this case, q2 is negative and we’re going to write the solution for q2 with a negative sign in front of the inverse cosine.</span></p>
+<p>在這情況下，<span>q2</span>為負，我們將在<span>q2</span>反餘弦的解錢加上負號。</p>
+<p><strong>4:32</strong></p>
+<p><span>Now, we need to solve for q1, so we’re going to introduce this particular red triangle, the angle beta that we solved previously, and the angle gamma which is defined in terms of y and x.</span></p>
+<p>我們需求解<span>q1</span>，因此采用這個特定的三角形，之前求解的角度β以及根據<span>y</span>和<span>x</span>定義的角度<span>ɣ</span>。</p>
+<p><strong>4:44</strong></p>
+<p><span>Now, we write a slightly different relationship between q1, gamma and beta, different to what we had before.</span></p>
+<p><span>q1</span>、<span>ɣ</span>和β之間的關西，和之前求的不同。</p>
+<p><strong>4:50</strong></p>
+<p><span>There’s a change of sign involved.</span></p>
+<p>涉及到符號的變化。</p>
+<p><strong>4:51</strong></p>
+<p><span>Then, we can substitute all that previous equation and come up with this expression for q1.</span></p>
+<p>然後我們可代換之前所有等式，並求得此<span>q1</span>表達式。</p>
+<p><strong>4:56</strong></p>
+<p><span>Again, there is a change of sign here.</span></p>
+<p>同樣，這裡的符號發生了變化。</p>
+<p><strong>4:58</strong></p>
+<p><span>Previously, this was a negative sign.</span></p>
+<p>先前，這是個負號。</p>
+<p><strong>5:01</strong></p>
+<p><span>And, here in summary form is the solution for the inverse kinematics of our two-link robot when it is in this particular configuration, where q2 is negative.</span></p>
+<p>這是雙連桿機構在此逆向運動學的總形式，其中<span>q2</span>為負。</p>
+<p><strong>5:10</strong></p>
+<p><span>Let’s compare the two solutions, the case where q2 is positive and the case where q2 is negative.</span></p>
+<p>讓我們比較兩個解決方案，<span>q2</span>為正和<span>q2</span>為負的情況。</p><br />W15 << <a href='W15.html'>Previous</a> <a href='Product Drawing.html'>Next</a> >> Product Drawing</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
