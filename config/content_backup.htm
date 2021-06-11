@@ -569,10 +569,21 @@ errorCode=vrep.simxSetJointTargetVelocity(clientID,right_m_handle,-1, vrep.simx_
 <p><strong>1.</strong>討論stage3在coppeliasim中要如何匯入感測器，以及程式要如何編寫。</p>
 <p><strong>2.</strong>討論W13中RobotDk機械手臂是如何做取放動做。</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/a8Uw1WOhCYk" title="YouTube video player" width="560"></iframe></p>
-<h2>W14</h2><h3>MTB_Robot</h3>
+<h3>RobotDK</h3>
+<p><strong>1.</strong> 下載完RobotDK後開啟資料夾內的 <strong>a_start_robodk.bat </strong></p>
+<p><strong>2.</strong>下載老師所提供的 <span> </span><a href="https://drive.google.com/file/d/1XoB3F5cPK8R4Y8AIWL5pKR5TQjPW8TRv/view?usp=sharing">Pick and Place</a></p>
+<p><strong>3.</strong>在RobotDK內開啟檔案內的 <strong>Example 02-1 Pick and place with Python.rdk</strong></p>
+<p><strong>4.</strong>將 <strong>pick_and_place.py </strong>放入 <strong>SciTE</strong> 並點選 <strong>Tools--&gt;GO</strong></p>
+<p><strong>✴<span>若發生此情況，需要在編輯器上輸入</span><strong> pip install robodk</strong></strong></p>
+<p><span><img alt="" height="473" src="/images/scite.jpg" width="555"/></span></p>
+<p><img alt="" height="341" src="/images/cmd.jpg" width="654"/></p>
+<p></p>
+<p><strong>5.</strong>再<span>點選 </span><strong>Tools--&gt;GO </strong>會發現無法做動，那是因為程式裡的<strong> robotdk_ip='192.168.19.222'</strong> 為老師的ip位置，要使其運作，需改成自己電腦的ip位置 <strong>127.0.0.1</strong></p>
+<p><img alt="" height="486" src="/images/scite pick.jpg" width="556"/></p>
+<p></p><h2>W14</h2><h3>MTB_Robot</h3>
 <p>組長先做出手臂程式，我再和組長想出要如何在coppeliasim內新增UI介面</p>
 <p><img alt="" height="334" src="/images/1623332585244.jpg" width="700"/></p>
-<p></p>
+<p><img alt="" height="239" src="/images/1623335008011.jpg" width="235"/></p>
 <p><strong>手臂程式:(沒有UI介面)</strong></p>
 <pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
     corout=coroutine.create(coroutineMain)
