@@ -133,22 +133,162 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">建立Leo編輯Palican << <a href='建立Leo編輯Palican.html'>Previous</a> <a href='W2.html'>Next</a> >> W2<br /><h1>協同倉儲</h1>
-<p><strong>Step 1 :</strong>進入倉儲的setting，並選擇<span>Manage access</span></p>
-<p><span><img alt="" height="393" src="./../images/Manage access.jpg" width="850"/></span></p>
-<p><span><strong>Step 2 :</strong>點選<strong> Invite a collaboratot</strong></span></p>
-<p><span><span><img alt="" height="393" src="./../images/Invite a collaboratot.jpg" width="850"/></span></span></p>
-<p><span><span><strong>Step 3 : 組長與組員互相邀請</strong></span></span></p>
-<p><span><span><strong>1.組長 </strong>需輸入組員github名稱</span></span></p>
-<p><span><span><strong>2.組員 </strong><span>需輸入組員github名稱</span></span></span></p>
-<p><span><span><img alt="" height="319" src="./../images/Invite a collaboratot name.jpg" width="532"/></span></span></p>
-<p><span><span><strong>Step 4 : </strong>組員clone組長倉儲並在倉儲下輸入 </span></span></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/組長/stage2-ag1.git stage2-ag1      clone組長倉儲
-cd stage2-ag1
-git remote add 組員 https://github.com/40823145/stage2-ag1.git     git add自己倉儲</pre>
+    <div id="tipue_search_content">Onshape 零組件繪製 << <a href='Onshape 零組件繪製.html'>Previous</a> <a href='Product Drawing.html'>Next</a> >> Product Drawing<br /><h1>鍵盤操控取放</h1>
+<p><a href="https://drive.google.com/file/d/1rmUbYO_52BSAZNwUwFHykm-PUCKfLYJm/view?usp=sharing">CoppeliaSim場景檔</a></p>
+<p><strong>流程影片:</strong></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/AaXmVrtzZg0" title="YouTube video player" width="560"></iframe></p>
 <p></p>
-<p>⭐⭐組員在push時，若需要上傳至小組倉儲則輸入<strong>git push ，</strong>而要上傳至自己倉儲時則輸入<strong>git push 組員</strong></p>
-<br />建立Leo編輯Palican << <a href='建立Leo編輯Palican.html'>Previous</a> <a href='W2.html'>Next</a> >> W2</div>
+<p><strong>Lua程式內容:</strong></p>
+<p><strong>1.主程式:</strong></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    axis1=sim.getObjectHandle('MTB_axis1')
+    axis2=sim.getObjectHandle('MTB_axis2')
+    axis3=sim.getObjectHandle('MTB_axis3')
+    axis4=sim.getObjectHandle('MTB_axis4')
+    mtb3=sim.getObjectHandle('MTB_link3')
+    suctionPad=sim.getObjectHandle('suctionPad')
+    BaseFrame=sim.getObjectHandle("BaseFrame")
+    block =sim.getObjectHandle("block")
+    deg1 = 0
+    deg2 = 0
+    distance3 = 0
+    modelBase=sim.getObjectHandle(sim.handle_self)
+    robotBase=modelBase
+    robotName='suctionPad'
+    deg = math.pi/180
+    
+end
+function sysCall_actuation() 
+    calibration = 0.0042
+    message, auxiliaryData=sim.getSimulatorMessage()
+        while message ~= -1 do
+            key=auxiliaryData[1]
+            sim.addStatusbarMessage('????? key:'..key)
+            if (message==sim.message_keypress) then
+            if (auxiliaryData[1]==112) then --p activate the suction pad
+                sim.setScriptSimulationParameter(sim.getScriptAssociatedWithObject(suctionPad),"active",'true')
+                end -- if p
+                if (auxiliaryData[1]==113) then --q deactivate the suction pad
+                sim.setScriptSimulationParameter(sim.getScriptAssociatedWithObject(suctionPad),'active','false')
+                end -- if q
+                if (auxiliaryData[1]==108) then --l 
+                     deg1 = 40.9472
+                     deg2 = -68.978
+                     sim.setJointPosition(axis1, deg1)
+                     sim.setJointPosition(axis2, deg2)
+                end -- if l
+                if (auxiliaryData[1]==114) then --r 
+                     deg1 = -161.4509   
+                     deg2 = -89.6799
+                     sim.setJointPosition(axis1, deg1)
+                     sim.setJointPosition(axis2, deg2)
+                end -- if r
+                if (auxiliaryData[1]==100) then --d 
+                     distance3 = distance3 + 0.03 + calibration
+                     sim.setJointPosition(axis3, distance3)
+                end -- if d
+                if (auxiliaryData[1]==117) then --u
+                     distance3 = distance3 - 0.03 - calibration
+                     sim.setJointPosition(axis3, distance3)
+                end -- if u
+           end  -- if
+    message, auxiliaryData=sim.getSimulatorMessage()
+        end -- while
+end -- function
+</pre>
+<p><strong>2.吸盤程式:</strong></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    s=sim.getObjectHandle('suctionPadSensor')
+    l=sim.getObjectHandle('suctionPadLoopClosureDummy1')
+    l2=sim.getObjectHandle('suctionPadLoopClosureDummy2')
+    b=sim.getObjectHandle('suctionPad')
+    suctionPadLink=sim.getObjectHandle('suctionPadLink')
+
+    infiniteStrength=sim.getScriptSimulationParameter(sim.handle_self,'infiniteStrength')
+    maxPullForce=sim.getScriptSimulationParameter(sim.handle_self,'maxPullForce')
+    maxShearForce=sim.getScriptSimulationParameter(sim.handle_self,'maxShearForce')
+    maxPeelTorque=sim.getScriptSimulationParameter(sim.handle_self,'maxPeelTorque')
+
+    sim.setLinkDummy(l,-1)
+    sim.setObjectParent(l,b,true)
+    m=sim.getObjectMatrix(l2,-1)
+    sim.setObjectMatrix(l,-1,m)
+end
+
+function sysCall_cleanup() 
+--[[
+    sim.setLinkDummy(l,-1)
+    sim.setObjectParent(l,b,true)
+    m=sim.getObjectMatrix(l2,-1)
+    sim.setObjectMatrix(l,-1,m)
+]]--
+end 
+
+function sysCall_sensing() 
+    parent=sim.getObjectParent(l)
+    if (sim.getScriptSimulationParameter(sim.handle_self,'active')==false) then
+        if (parent~=b) then
+            sim.setLinkDummy(l,-1)
+            sim.setObjectParent(l,b,true)
+            m=sim.getObjectMatrix(l2,-1)
+            sim.setObjectMatrix(l,-1,m)
+        end
+    else
+        if (parent==b) then
+            -- Here we want to detect a respondable shape, and then connect to it with a force sensor (via a loop closure dummy dummy link)
+            -- However most respondable shapes are set to "non-detectable", so "sim.readProximitySensor" or similar will not work.
+            -- But "sim.checkProximitySensor" or similar will work (they don't check the "detectable" flags), but we have to go through all shape objects!
+            index=0
+            while true do
+                shape=sim.getObjects(index,sim.object_shape_type)
+                if (shape==-1) then
+                    break
+                end
+                if (shape~=b) and (sim.getObjectInt32Parameter(shape,sim.shapeintparam_respondable)~=0) and (sim.checkProximitySensor(s,shape)==1) then
+                    -- Ok, we found a respondable shape that was detected
+                    -- We connect to that shape:
+                    -- Make sure the two dummies are initially coincident:
+                    sim.setObjectParent(l,b,true)
+                    m=sim.getObjectMatrix(l2,-1)
+                    sim.setObjectMatrix(l,-1,m)
+                    -- Do the connection:
+                    sim.setObjectParent(l,shape,true)
+                    sim.setLinkDummy(l,l2)
+                    break
+                end
+                index=index+1
+            end
+        else
+            -- Here we have an object attached
+            if (infiniteStrength==false) then
+                -- We might have to conditionally beak it apart!
+                result,force,torque=sim.readForceSensor(suctionPadLink) -- Here we read the median value out of 5 values (check the force sensor prop. dialog)
+                if (result&gt;0) then
+                    breakIt=false
+                    if (force[3]&gt;maxPullForce) then breakIt=true end
+                    sf=math.sqrt(force[1]*force[1]+force[2]*force[2])
+                    if (sf&gt;maxShearForce) then breakIt=true end
+                    if (torque[1]&gt;maxPeelTorque) then breakIt=true end
+                    if (torque[2]&gt;maxPeelTorque) then breakIt=true end
+                    if (breakIt) then
+                        -- We break the link:
+                        sim.setLinkDummy(l,-1)
+                        sim.setObjectParent(l,b,true)
+                        m=sim.getObjectMatrix(l2,-1)
+                        sim.setObjectMatrix(l,-1,m)
+                    end
+                end
+            end
+        end
+    end
+    if (sim.getSimulationState()==sim.simulation_advancing_lastbeforestop) then
+        sim.setLinkDummy(l,-1)
+        sim.setObjectParent(l,b,true)
+        m=sim.getObjectMatrix(l2,-1)
+        sim.setObjectMatrix(l,-1,m)
+    end
+end </pre>
+<p></p><br />Onshape 零組件繪製 << <a href='Onshape 零組件繪製.html'>Previous</a> <a href='Product Drawing.html'>Next</a> >> Product Drawing</div>
         
     <!-- footer -->
       <div class="container">
